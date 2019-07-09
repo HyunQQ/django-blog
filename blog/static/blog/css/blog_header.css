@@ -1,0 +1,66 @@
+#blog-title{
+    color: #00498c;
+    size : 100px;
+    margin-top: 50px;
+
+}
+
+.top-menu, .top-menu:hover, .top-menu:visited{
+    color: #32AAFF;
+    float: right;
+    font-size: 17pt;
+    margin-right: 20px;
+}
+
+.userName{
+    float: right;
+    margin-right: 20px;
+    color: #00498c;
+    font-family: inherit;
+    font-size: 20px;
+}
+
+.post{
+    
+    position: relative;
+    margin-bottom: 70px;
+    border-color: #32AAFF;
+    border-bottom-style: dotted;
+    
+}
+.post:hover{
+    background-color: #d3d3d3;
+}
+
+.post #date{
+    
+    color: #828282;
+}
+.post h1{
+    color: #000000;
+}
+.post #contents{
+    text-align: center;
+    
+}
+
+.post #category{
+    color: #828282;
+}
+
+.comment{
+    margin: 20px 0px 20px 20px;
+}
+
+.search-box{
+    height:50px;
+    
+}
+.search-box-form{
+    float: right;
+    padding-right: 5%;
+}
+
+.add-comment{
+    height: 100px;
+}

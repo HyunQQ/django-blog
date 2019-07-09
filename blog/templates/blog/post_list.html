@@ -1,0 +1,15 @@
+{% extends "blog/base.html" %}
+
+{% block content%}
+    {% for post in posts%}
+    <a class="post_link" href="{% url 'blog:post_detail' pk=post.pk %}">
+        <div class ="post">
+            <h1>{{ post.title }}</h1>
+            <p id='date'>{{post.published_date}}</p>
+            <p id='contents'>{{post.text|linebreaks}}</p>
+            Comments: {{ post.approved_comment.count }}
+            <p id='category' >tag : {{post.category}}</p>
+        </div>
+    </a>
+    {% endfor%}
+{% endblock %}

@@ -1,0 +1,144 @@
+
+<html>
+    <head>
+        <title>QQ_dev_log</title>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <!-- Bootstrap Js CDN -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'blog/css/blog_frame.css'%}">
+        <link rel="stylesheet" href="{% static 'blog/css/blog_header.css'%}">
+        <link rel="stylesheet" href="{% static 'blog/css/blog_container.css'%}">
+        <script>
+            $(document).ready(function () {
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').toggleClass('active');
+                });
+            });
+        </script>
+
+
+        <!-- <link rel="stylesheet" href="{% static 'css/blog.css' %}"> -->
+    </head>
+    <body>
+
+        <!-- <span class="glyphicon glyphicon-list" id="header_menu"></span>             -->
+        <div class="wrapper">
+
+            <!-- Sidebar -->
+            <nav id="sidebar">
+                    <div class="sidebar-header">
+                        <h3>Q's Develop</h3>
+                        <strong>QD</strong>
+                    </div>
+    
+                    <ul class="list-unstyled components">
+                        <li>
+                            <a href="{% url 'blog:post_list' %}">
+                                <i class="glyphicon glyphicon-home"></i>
+                                Home
+                            </a>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-briefcase"></i>
+                                About
+                            </a>
+                            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+                                <i class="glyphicon glyphicon-duplicate"></i>
+                                Pages
+                            </a>
+                            <ul class="collapse list-unstyled" id="pageSubmenu">
+                                <li><a href="#">Page 1</a></li>
+                                <li><a href="#">Page 2</a></li>
+                                <li><a href="#">Page 3</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-link"></i>
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-paperclip"></i>
+                                FAQ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-send"></i>
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+    
+                    <!-- <ul class="list-unstyled CTAs">
+                        <li><a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a></li>
+                        <li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a></li>
+                    </ul> -->
+                </nav>
+        
+            <!-- Page Content -->
+            <div id="content">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+            
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <span class="glyphicon glyphicon-list"></span>
+                                <!-- <span>Toggle Sidebar</span> -->
+                            </button>
+                        </div>
+    
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                        <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a href="{% url 'logout' %}" class="top-menu"><span class="glyphicon glyphicon-log-out"></span></a>
+                        <span class="userName">Hello {{ user.username }}</span>
+                        
+                        {% else %}
+                        <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-log-in"></span></span></a>
+                        {% endif %}
+                        
+                        <h1 id="blog-title"><a href="http://127.0.0.1:8000/">Q's Develop</a></h1>
+                        
+
+                        <div class ="search-box">
+
+                            <form class="search-box-form" action="{% url 'blog:post_list' %}" method="get">
+                                <!-- <div class='search-box'></div> -->
+                                <!-- <label> 검색 </label> -->
+                                <select name ='fd_name' id ="" >
+                                    <option value ='title'>title</option>
+                                    <option value ='text'>text</option>
+                                </select>
+                                <input type="text" name="item">
+                                <button class='btn' type='submit'>Search</button>            
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class = "container">
+    
+                    <div class = "col-md-10">
+                        {% block content%}
+                        {% endblock%}
+                    </div>
+                
+        
+                </div>
+            </div>
+        </div> 
+        
+                
+            
+
+                
+
+
+    </body>
+</html>
