@@ -27,12 +27,21 @@ def post_detail(request, pk):
     comments = Comment.objects.filter(created_date__lte = timezone.now(), post=post).order_by('-created_date')
     
     if request.method =="POST":
+    
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.post = post
             comment.save()
-            return redirect('post_detail', pk=post.pk)
+
+            comments = Comment.objects.filter(created_date__lte = timezone.now(), post=post).order_by('-created_date')
+            # return redirect('blog:post_detail', pk=post.pk)
+            return render(request, 'blog/post_detail.html', {
+                'post':post,
+                'comments':comments,
+                'form':form
+            })
+
     else:
         form = CommentForm()
     return render(request, 'blog/post_detail.html', {
@@ -60,7 +69,9 @@ def post_new(request):
 @login_required(login_url='admin:login')
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    if request.method == "POST":
+    print("11")
+    if request.method == "GET":
+        print("22")
         form  =  PostForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
