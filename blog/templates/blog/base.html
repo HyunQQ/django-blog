@@ -50,9 +50,9 @@
                                 Pages
                             </a>
                             <ul class="collapse list-unstyled" id="pageSubmenu">
-                                <li><a href="#">Page 1</a></li>
-                                <li><a href="#">Page 2</a></li>
-                                <li><a href="#">Page 3</a></li>
+                                {% for post in posts%}
+                                    <li><a href="#">{{post.category}}</a></li>
+                                {% endfor %}
                             </ul>
                         </li>
                         <li>
@@ -114,6 +114,7 @@
                                 <select name ='fd_name' id ="" >
                                     <option value ='title'>title</option>
                                     <option value ='text'>text</option>
+                                    <option value ='category'>category</option>
                                 </select>
                                 <input type="text" name="item">
                                 <button class='btn' type='submit'>Search</button>            
