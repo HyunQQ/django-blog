@@ -1,0 +1,16 @@
+.edit_comment{
+    display: inline;
+}
+.edit_comment label{
+    display: none;
+}
+
+textarea{
+    width : 400px;
+    height : 100px;
+}
+
+input{
+    width: 100px;
+    height : 100px;
+}
