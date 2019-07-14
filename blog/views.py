@@ -69,9 +69,7 @@ def post_new(request):
 @login_required(login_url='admin:login')
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    print("11")
     if request.method == "GET":
-        print("22")
         form  =  PostForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
