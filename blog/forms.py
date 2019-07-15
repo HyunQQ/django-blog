@@ -20,6 +20,18 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ['text','author']
 
+        # 파일 업로드 필드에 제한 및 클래스, 라벨 추가
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['text'].widget.attrs.update({
+            'class':'form-control',
+            })
+        self.fields['author'].widget.attrs.update({
+        'class':'form-control',
+        })
+
+
+
 # class SearchForm(forms.ModelForm):
 #     class Meta:
 #         model = Search

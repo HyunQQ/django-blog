@@ -5,12 +5,19 @@
     display: none;
 }
 
-textarea{
+.form-group div{
+    display: inline-block;
+    /* height: 100px; */
+}
+
+/* textarea{
     width : 400px;
     height : 100px;
 }
 
-input{
+.edit_comment input{
     width: 100px;
     height : 100px;
+
 }
+ */

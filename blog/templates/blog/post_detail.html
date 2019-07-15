@@ -25,10 +25,17 @@
 
     <div class="edit_comment">
         <p>Add Comment</p>
-        <form method="POST" class ="post-form">
-            {% csrf_token %}
-            {{ form }}
-            <button type="submit" class="save btn btn-default">Send</button>
+        <form method="POST" class ="post-form form-inline">
+            <div class="form-group">
+                {% csrf_token %}
+                <div>
+                    {{ form.text }}
+                </div>
+                <div>
+                    {{ form.author }}
+                </div>
+                <button type="submit" class="save btn btn-default">Send</button>
+            </div>
         </form>
     </div>
     <hr>
