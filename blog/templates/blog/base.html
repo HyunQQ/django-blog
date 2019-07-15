@@ -1,27 +1,18 @@
-
+{% load static %}
 <html>
     <head>
         <title>QQ_dev_log</title>
         
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'blog/css/blog_frame.css'%}">
+        <link rel="stylesheet" href="{% static 'blog/css/blog_container.css'%}">
+        <link rel="stylesheet" href="{% static 'blog/css/blog_header.css'%}">
+        
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <!-- Bootstrap Js CDN -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="{% static 'blog/js/blog_main.js' %}"></script>
 
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'blog/css/blog_frame.css'%}">
-        <link rel="stylesheet" href="{% static 'blog/css/blog_header.css'%}">
-        <link rel="stylesheet" href="{% static 'blog/css/blog_container.css'%}">
-        <script>
-            $(document).ready(function () {
-                $('#sidebarCollapse').on('click', function () {
-                    $('#sidebar').toggleClass('active');
-                });
-            });
-        </script>
-
-
-        <!-- <link rel="stylesheet" href="{% static 'css/blog.css' %}"> -->
     </head>
     <body>
 
@@ -111,13 +102,20 @@
                             <form class="search-box-form" action="{% url 'blog:post_list' %}" method="get">
                                 <!-- <div class='search-box'></div> -->
                                 <!-- <label> 검색 </label> -->
-                                <select name ='fd_name' id ="" >
-                                    <option value ='title'>title</option>
-                                    <option value ='text'>text</option>
-                                    <option value ='category'>category</option>
-                                </select>
-                                <input type="text" name="item">
-                                <button class='btn' type='submit'>Search</button>            
+                                
+                                <div class="input-group">
+                                    <select name ='fd_name' class="form-control" >
+                                            <option value ='title'>title</option>
+                                            <option value ='text'>text</option>
+                                            <!-- <option value ='category'>category</option> -->
+                                    </select>
+                                    <input type="text" name="item" class="form-control" placeholder="Search">
+                                    <div class="input-group-btn">
+                                        <button class='btn btn-default' type='submit'>
+                                            <i class="glyphicon glyphicon-search"></i>
+                                        </button>            
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -134,11 +132,8 @@
                 </div>
             </div>
         </div> 
-        
-                
-            
 
-                
+
 
 
     </body>

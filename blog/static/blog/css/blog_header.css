@@ -19,3 +19,9 @@
     font-family: inherit;
     font-size: 20px;
 }
+
+
+.input-group{
+    display: inline-flex;
+    float: right;
+}
