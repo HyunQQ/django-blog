@@ -62,15 +62,11 @@
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                                 
 
-
+<!-- 
     {% for comment in comments %}
         <div class="comment">
             <div calss="date">
                 {{ comment.created_date }}
-            <!-- {% if not comment.approved_comment %}
-                <a class="btn btn-default" href="{% url 'blog:comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-                <a class="btn btn-default" href="{% url 'blog:comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
-            {% endif %} -->
             </div>
             
             <p><span><strong> {{ comment.author }}</strong></span> <span>{{ comment.text|linebreaks }}</span></p>
@@ -80,6 +76,11 @@
         </div>
     {% empty %}
         <p>No comments here yet :) </p>
-    {% endfor %}
+    {% endfor %} -->
 
 {% endblock %}
+
+            <!-- {% if not comment.approved_comment %}
+                <a class="btn btn-default" href="{% url 'blog:comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                <a class="btn btn-default" href="{% url 'blog:comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+            {% endif %} -->
