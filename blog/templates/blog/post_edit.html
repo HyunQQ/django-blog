@@ -1,8 +1,13 @@
 {% extends 'blog/base.html' %}
+{% load static %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'daumeditor/css/editor.css' %}" type="text/css" charset="utf-8"/>
+<script src="{% static 'daumeditor/js/editor_loader.js' %}" type="text/javascript" charset="utf-8"></script>
+
+
     <h1>New Post</h1>
-    <form method="POST" class="post-form">
+    <form name="frm" id="frm" action="" method="POST" class="post-form">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Save</button>
@@ -13,3 +18,6 @@
 
 
 <!-- 스마트 에디터 조사 필요 -->
+<!-- 참고 -->
+<!-- http://blog.naver.com/PostView.nhn?blogId=matrix1597&logNo=220351149638&categoryNo=9&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=1&from=postView -->
+<!-- https://hellogk.tistory.com/65 -->
