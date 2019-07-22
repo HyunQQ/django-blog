@@ -2,11 +2,12 @@
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'daumeditor/css/editor.css' %}" type="text/css" charset="utf-8"/>
-<script src="{% static 'daumeditor/js/editor_loader.js' %}" type="text/javascript" charset="utf-8"></script>
-
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+<script src="{% static 'blog/js/blog_edit.js' %}"></script>
 
     <h1>New Post</h1>
+    <h2>summer note</h2>
     <form name="frm" id="frm" action="" method="POST" class="post-form">
         {% csrf_token %}
         {{ form.as_p }}

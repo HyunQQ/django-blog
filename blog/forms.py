@@ -9,6 +9,14 @@ class PostForm(forms.ModelForm):
         # fields = '__all__' 모든 필드 사용시
         fields =('title','text','category')
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['text'].widget.attrs.update({
+            'class':'form-control',
+            'id':'summernote',
+            })
+
+
 
 class LoginForm(forms.ModelForm):
     class Meta:
