@@ -1,3 +1,5 @@
+import pandas as pd
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
@@ -7,6 +9,7 @@ from django.http import HttpResponse
 
 from .models import Post, Comment
 from .forms import PostForm, LoginForm, CommentForm
+from .utils.function import remove_html_tag
 
 
 def post_list(request):
@@ -20,6 +23,13 @@ def post_list(request):
         })
 
     posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('-published_date')
+    tmp_posts = posts.values('title','text', 'published_date','category')
+    df_posts = pd.DataFrame.from_records(tmp_posts)
+    print(df_posts['text'])
+    df_posts['text'] = df_posts['text'].apply(lambda x: remove_html_tag(x))
+    print(df_posts['text'])
+
+
     return render(request, 'blog/post_list.html',{'posts':posts})
 
 def post_detail(request, pk):
