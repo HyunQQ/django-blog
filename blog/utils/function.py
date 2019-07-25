@@ -2,7 +2,8 @@ import re
 
 
 def remove_html_tag(data):
-    # p = re.compile(r'<.*?>')
-    data = re.sub(r'<.*?>','',data)
-    data = re.sub('\n')
-    return p.sub('\n',data)
+    p = re.compile(r'<.*?>')
+    result = p.sub(' ',data)
+    print(result)
+    print(type(result))
+    return result

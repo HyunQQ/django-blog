@@ -25,9 +25,9 @@ def post_list(request):
     posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('-published_date')
     tmp_posts = posts.values('title','text', 'published_date','category')
     df_posts = pd.DataFrame.from_records(tmp_posts)
-    print(df_posts['text'])
+    # print(df_posts['text'])
     df_posts['text'] = df_posts['text'].apply(lambda x: remove_html_tag(x))
-    print(df_posts['text'])
+    # print(df_posts['text'])
 
 
     return render(request, 'blog/post_list.html',{'posts':posts})
