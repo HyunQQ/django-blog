@@ -25,3 +25,11 @@
     display: inline-flex;
     float: right;
 }
+
+.input-group-btn{
+    width: 40px;
+}
+
+.input-group-btn button{
+    height: 34px;
+}
