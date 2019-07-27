@@ -6,12 +6,14 @@
 <script src="{% static 'blog/js/blog_list.js'%}"></script>
 
     {% for post in posts %}
-    <a class="post_link" href="{% url 'blog:post_detail' pk=post.pk %}"></a>
+    
         <div class ="post card-body px-lg-5 pt-0">
-            <h1>{{ post.title }}</h1>
-            <p id='date'>{{post.published_date}}</p>
-            <p id='contents'>{{post.text|striptags}}</p>
-            <p id='category' >tag : {{post.category}}</p>
+            <a class="post_link" href="{% url 'blog:post_detail' pk=post.pk %}">
+                <h1>{{ post.title }}</h1>
+                <p id='date'>{{post.published_date}}</p>
+                <p id='contents'>{{post.text|striptags}}</p>
+                <p id='category' >tag : {{post.category}}</p>
+            </a>
         </div>
     </a>
     {% endfor%}
