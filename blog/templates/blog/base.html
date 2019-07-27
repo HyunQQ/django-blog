@@ -26,46 +26,47 @@
                         <h3>Q's Develop</h3>
                         <strong>QD</strong>
                     </div>
-    
-                    <ul class="list-unstyled components">
-                        <li>
-                            <a href="{% url 'blog:post_list' %}">
-                                <i class="glyphicon glyphicon-home"></i>
-                                Home
-                            </a>
-                            <a href="#">
-                                <i class="glyphicon glyphicon-briefcase"></i>
-                                About
-                            </a>
-                            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
-                                <i class="glyphicon glyphicon-duplicate"></i>
-                                Pages
-                            </a>
-                            <ul class="collapse list-unstyled" id="pageSubmenu">
-                                {% for post in posts%}
-                                    <li><a href="#">{{post.category}}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="glyphicon glyphicon-link"></i>
-                                Portfolio
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="glyphicon glyphicon-paperclip"></i>
-                                FAQ
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="glyphicon glyphicon-send"></i>
-                                Contact
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="sidebar-ul">
+                       <ul class="list-unstyled components">
+                            <li>
+                                <a href="{% url 'blog:post_list' %}">
+                                    <i class="glyphicon glyphicon-home"></i>
+                                    Home
+                                </a>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-briefcase"></i>
+                                    About
+                                </a>
+                                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+                                    <i class="glyphicon glyphicon-duplicate"></i>
+                                    Pages
+                                </a>
+                                <ul class="collapse list-unstyled" id="pageSubmenu">
+                                    {% for post in posts%}
+                                        <li><a href="#">{{post.category}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-link"></i>
+                                    Portfolio
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-paperclip"></i>
+                                    FAQ
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-send"></i>
+                                    Contact
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
     
                     <!-- <ul class="list-unstyled CTAs">
                         <li><a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a></li>
