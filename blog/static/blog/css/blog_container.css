@@ -1,3 +1,7 @@
 #content{
     width: 100%;
 }
+.container{
+    margin-right: auto;
+    margin-left: 5%;
+}
