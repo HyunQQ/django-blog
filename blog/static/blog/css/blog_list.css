@@ -1,16 +1,12 @@
 
 .post{
-    
     position: relative;
     margin-bottom: 70px;
     padding:15px;
     border-color: #32AAFF;
     border-bottom-style: dotted;
-    
 }
 .post:hover{
-    
-    
     background: #fff;
     border: none;
     border-radius: 0;
@@ -19,20 +15,32 @@
     border-bottom-style: dotted;
 }
 
-.post #date{
-    
+.post a div{
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 30px;
+}
+
+.post #date{ 
     color: #828282;
+    float: right;
+    padding-right: 30px;
 }
 .post h1{
     color: #000000;
+    padding-left: 30px;
 }
 .post #contents{
-    text-align: center;
-    
+    text-align: left;
+    padding-bottom: 20px;
+    padding-left: 50px;
+    color: #808080;
+    font-size: large;
 }
 
 .post #category{
-    color: #828282;
+    color: #838383;
+    padding-left: 30px;
 }
 
 .comment{

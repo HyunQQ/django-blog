@@ -9,8 +9,7 @@
     
         <div class ="post card-body px-lg-5 pt-0">
             <a class="post_link" href="{% url 'blog:post_detail' pk=post.pk %}">
-                <h1>{{ post.title }}</h1>
-                <p id='date'>{{post.published_date}}</p>
+                <div><h1>{{ post.title }}</h1> <span id='date'>{{post.published_date}}</span></div>
                 <p id='contents'>{{post.text|striptags}}</p>
                 <p id='category' >tag : {{post.category}}</p>
             </a>
