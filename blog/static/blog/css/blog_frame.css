@@ -109,9 +109,12 @@ i, span {
     transform: translateX(50%);
 }
 
+
 #sidebar .sidebar-header {
     padding: 20px;
     background: #00498c;
+    position: fixed;
+    padding-right: 0;
 }
 
 #sidebar .sidebar-header strong {
@@ -119,9 +122,20 @@ i, span {
     font-size: 1.8em;
 }
 
-#sidebar ul.components {
+#sidebar .sidebar-ul{
+    position: fixed;
+    width: 250px;
+    top: 80px;
+}
+
+#sidebar.active .sidebar-ul{
+    width: 80px;
+}
+
+#sidebar .sidebar-ul ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #47748b;
+    /* border-bottom: 1px solid #47748b; */
+    position: relative;
 }
 
 #sidebar ul li a {
@@ -141,6 +155,8 @@ i, span {
     color: #fff;
     background: #00498c;
 }
+
+
 
 
 a[data-toggle="collapse"] {
