@@ -3,12 +3,20 @@
     
     position: relative;
     margin-bottom: 70px;
+    padding:15px;
     border-color: #32AAFF;
     border-bottom-style: dotted;
     
 }
 .post:hover{
-    background-color: #d3d3d3;
+    
+    
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    border-color: #32AAFF;
+    border-bottom-style: dotted;
 }
 
 .post #date{
