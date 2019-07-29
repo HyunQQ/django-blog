@@ -143,5 +143,17 @@ def comment_remove(request, pk):
     comment.delete()
     return redirect('blog:post_detail',pk=comment.post.pk)
 
+
+def contact(request):
+    return render(request, 'blog/contact.html')
+
+    
+def about(request):
+    return render(request, 'blog/about.html')
+    
+    
+def portfolio(request):
+    return render(request, 'blog/portfolio.html')
+    
     
     

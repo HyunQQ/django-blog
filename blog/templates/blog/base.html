@@ -33,7 +33,7 @@
                                     <i class="glyphicon glyphicon-home"></i>
                                     Home
                                 </a>
-                                <a href="#">
+                                <a href="{% url 'blog:about' %}">
                                     <i class="glyphicon glyphicon-briefcase"></i>
                                     About
                                 </a>
@@ -48,19 +48,13 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{% url 'blog:portfolio' %}">
                                     <i class="glyphicon glyphicon-link"></i>
                                     Portfolio
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-paperclip"></i>
-                                    FAQ
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
+                                <a href="{% url 'blog:contact' %}">
                                     <i class="glyphicon glyphicon-send"></i>
                                     Contact
                                 </a>
