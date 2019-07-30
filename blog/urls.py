@@ -19,3 +19,6 @@ urlpatterns=[
     path('about/', views.about, name='about'),
     path('portfolio/', views.portfolio, name='portfolio'),
 ]
+
+# 미디어 파일 세팅
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
