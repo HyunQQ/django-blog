@@ -3,23 +3,31 @@
 
 
 {% block content %}
-<hr class="featurette-divider">
+<link rel="stylesheet" href="{% static 'blog/css/about.css'%}">
 
-<div class="row featurette">
-    <div class="col-md-7">
+
+<hr class="featurette-divider">
+<div class="about_div">
+    <div class="row featurette col-md-7">
+        
         <h2 class="featurette-heading">Q's dev log
             <span class="text-muted">with Django</span>
         </h2>
+        <br><br>
         <p class="lead">
-            Django를 이용해 만든 blog 샘플입니다.
+            Django를 이용해 만든 blog입니다. <br>
+            관련된 소스코드는 모두 github에 등록될 예정이며 <br>
+            앞으로 python 이외에도 접하는 코딩과 관련된<br>
+            모든 내용을 차근차근 정리해나갈 예정입니다.<br><br>
+            GitHub : <a href="https://github.com/HyunQQ">https://github.com/HyunQQ</a>
         </p>
+        
+    </div>
+
+    <div class="col-md-5"> 
+        <img class="featurette-image img-responsive center-block" src="{% static 'blog/image/great.jpg'%}">
     </div>
 </div>
-
-<div class="col-md-5"> 
-    <img class="featurette-image img-responsive center-block" src="{% me%}">
-</div>
-
 <hr class="featurette-divider">
 
 {% endblock %}
