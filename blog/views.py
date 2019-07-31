@@ -145,15 +145,28 @@ def comment_remove(request, pk):
 
 
 def contact(request):
-    return render(request, 'blog/contact.html')
+    posts_for_category = Post.objects.filter(published_date__lte = timezone.now()).order_by('-published_date')
+
+    context={
+        'posts_for_category':posts_for_category,
+    }
+    return render(request, 'blog/contact.html', context)
 
     
 def about(request):
-    return render(request, 'blog/about.html')
+    posts_for_category = Post.objects.filter(published_date__lte = timezone.now()).order_by('-published_date')
+    context={
+        'posts_for_category':posts_for_category,
+    }
+    return render(request, 'blog/about.html', context)
     
     
 def portfolio(request):
-    return render(request, 'blog/portfolio.html')
+    posts_for_category = Post.objects.filter(published_date__lte = timezone.now()).order_by('-published_date')
+    context={
+        'posts_for_category':posts_for_category,
+    }
+    return render(request, 'blog/portfolio.html', context)
     
     
     
