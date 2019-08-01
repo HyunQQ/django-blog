@@ -1,5 +1,5 @@
 from django.urls import path
-# from django.conf.urls.static import static
+from django.conf.urls.static import static
 
 from blog import views
 
@@ -23,4 +23,4 @@ urlpatterns=[
 ]
 
 # 미디어 파일 세팅
-# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

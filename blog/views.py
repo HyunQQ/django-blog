@@ -33,7 +33,6 @@ def post_list(request):
         })
 
 def post_category_list(request, category):
-    print(category)
     posts_for_category = Post.objects.filter(published_date__lte = timezone.now()).order_by('-published_date')
     posts = Post.objects.filter(category = category, published_date__lte = timezone.now()).order_by('-published_date')
     return render(request, 'blog/post_list.html',{
