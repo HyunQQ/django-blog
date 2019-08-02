@@ -60,12 +60,7 @@
     height: 100px;
 }
 
-
 .lst_paging{
     text-align: center;
-    font-size: large;
 }
 
-.lst_paging a{
-    margin: 5px;
-}

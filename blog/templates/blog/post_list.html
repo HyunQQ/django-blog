@@ -1,5 +1,6 @@
 {% extends "blog/base.html" %}
 {% load static %}
+{% load comm_ui %}
 
 {% block content%}
 <link rel="stylesheet" href="{% static 'blog/css/blog_list.css'%}">
@@ -18,19 +19,35 @@
     {% endfor%}
 
     <div class="lst_paging">
-        {% if posts.has_previous %}
-        <!-- <a href="?page=1"><<</a> -->
-        <a href="?page={{ posts.previous_page_number }}"> <이전 </a>
-        {% endif %}
+        <nav>
+            <ul class="pagination">
+                {% if posts.has_previous %}
+                <!-- <a href="?page=1"><<</a> -->
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ posts.previous_page_number }}"> Previous </a>
+                </li>
+                {% endif %}
+                {% for i in posts.paginator.page_range %}
+                    {% if posts.number ==  i %}
+                        <li class="page-item active">
+                            <a class="page-link" href="?page={{i}}">{{i}}</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{i}}">{{i}}</a>
+                        </li>
 
-        {% for i in posts.paginator.page_range %}
-            <a href="?page={{i}}">{{i}}</a>
-        {% endfor %}
+                    {% endif %}
+                {% endfor %}
 
-        {% if posts.has_next %}
-        <a href="?page={{posts.next_page_number}}"> 다음> </a>
-        <!-- <a href="?page={{posts.paginator.num_pages}}">>></a> -->
-        {% endif %}
+                {% if posts.has_next %}
+                <li class="page-item">    
+                    <a class="page-link" href="?page={{posts.next_page_number}}">Next</a>
+                    <!-- <a href="?page={{posts.paginator.num_pages}}">>></a> -->
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
     </div>
 
 
