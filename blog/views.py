@@ -6,6 +6,7 @@ from django.contrib.auth import login, authenticate
 from django.utils import timezone
 from django.views.generic import View
 from django.http import HttpResponse
+from django.core.paginator import Paginator
 
 from .models import Post, Comment
 from .forms import PostForm, LoginForm, CommentForm
@@ -20,12 +21,23 @@ def post_list(request):
         filter = option + '__' + search_type
         posts_for_category = Post.objects.filter(published_date__lte = timezone.now()).order_by('-published_date')
         posts = Post.objects.filter(**{filter: request.GET.get('item')}, published_date__lte = timezone.now()).order_by('-published_date')
+        
+        ###############paging #################
+        paginator = Paginator(posts,3)
+        page = request.GET.get('page')
+        posts = paginator.get_page(page)
+
         return render(request, 'blog/post_list.html',{
             'posts':posts,
             'posts_for_category':posts_for_category,
         })
     posts_for_category = Post.objects.filter(published_date__lte = timezone.now()).order_by('-published_date')
     posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('-published_date')
+
+    ###############paging #################
+    paginator = Paginator(posts,3)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
 
     return render(request, 'blog/post_list.html',{
             'posts':posts,
