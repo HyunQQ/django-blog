@@ -27,7 +27,7 @@ def post_list(request):
         category_lst = pd.unique(pd.DataFrame.from_records(tmp_posts_for_category)['category'])
 
         ###############paging #################
-        paginator = Paginator(posts,3)
+        paginator = Paginator(posts,5)
         page = request.GET.get('page')
         posts = paginator.get_page(page)
 
@@ -42,7 +42,7 @@ def post_list(request):
     category_lst = pd.unique(pd.DataFrame.from_records(tmp_posts_for_category)['category'])
     
     ###############paging #################
-    paginator = Paginator(posts,3)
+    paginator = Paginator(posts,5)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
 

@@ -12,7 +12,7 @@ class PostForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['text'].widget.attrs.update({
-            'class':'form-control',
+            'class':'form-control click2edit',
             'id':'summernote',
             })
 
