@@ -1,12 +1,16 @@
 $(document).ready(function() {
-    $('#summernote').summernote();
+    $('#summernote').summernote({
+      height: 400,
+      
+    });
   });
 
-  function edit(){
-    $('.click2edit').summernote({focus: true});
-  };
+  // 글 수정 및 저장
+  // function edit(){
+  //   $('#summernote').summernote({focus: true});
+  // };
 
-  function save(){
-    var markup = $('.click2edit').summernote('code');
-    $('.click2edit').summernote('destroy');
-  };
+  // function save(){
+  //   var markup = $('#summernote').summernote('code');
+  //   $('#summernote').summernote('destroy');
+  // };
