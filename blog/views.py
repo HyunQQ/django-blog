@@ -1,5 +1,6 @@
 import pandas as pd
 
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
@@ -128,6 +129,14 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html',{'form':form})
+
+# 참고 링크: https://devofhwb.tistory.com/90
+# https://cjh5414.github.io/django-file-upload/
+@csrf_exempt
+def fileup(request):
+    #  파일 업로드 코드 작성 필요
+    return 0
+
 
 def post_draft_list(request):
     posts = Post.objects.filter(published_date__isnull=True).order_by('created_date')
