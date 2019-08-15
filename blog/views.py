@@ -133,7 +133,9 @@ def post_edit(request, pk):
 @csrf_exempt
 def fileup(request):
     #  파일 업로드 코드 작성 필요
-    return 0
+    print(request.POST.get("file"))
+    url = "media" 
+    return HttpResponse(url)
 
 def post_draft_list(request):
     posts = Post.objects.filter(published_date__isnull=True).order_by('created_date')

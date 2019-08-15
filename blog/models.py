@@ -8,6 +8,7 @@ class Post(models.Model):
     # author = models.ForeignKey(settings.AUTH_USER_MODEL)
     title = models.CharField(max_length=200)
     text = models.TextField()
+    image = models.FileField(null=True, upload_to='uploaded_img')
     category = models.CharField(max_length=200)
     created_date = models.DateTimeField(default = timezone.now)
     published_date = models.DateTimeField(blank = True, null=True)
