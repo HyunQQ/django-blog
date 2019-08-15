@@ -137,7 +137,6 @@ def fileup(request):
     #  파일 업로드 코드 작성 필요
     return 0
 
-
 def post_draft_list(request):
     posts = Post.objects.filter(published_date__isnull=True).order_by('created_date')
     return render(request, 'blog/post_draft_list.html', {'posts':posts})
