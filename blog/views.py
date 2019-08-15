@@ -64,8 +64,6 @@ def post_category_list(request, category):
         'posts_for_category':category_lst,
     })
 
-    
-
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk) # 위의 4줄과 같은 역할
     comments = Comment.objects.filter(created_date__lte = timezone.now(), post=post).order_by('-created_date')
@@ -186,7 +184,4 @@ def about(request):
         'posts_for_category':category_lst,
     }
     return render(request, 'blog/about.html', context)
-    
-    
-    
     
