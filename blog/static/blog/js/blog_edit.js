@@ -14,6 +14,7 @@ $(document).ready(function() {
 
 function sendFile(file, el){
   var form_data = new FormData();
+  alert("test")
   form_data.append('file',file);
   $.ajax({
     data:form_data,
@@ -24,7 +25,7 @@ function sendFile(file, el){
     processData:false,
     success: function(url){
       alert(url)
-      // $(el).summernote('editor.insertImage', url);
+      $(el).summernote('editor.insertImage', url);
     }
   })
 
