@@ -5,7 +5,7 @@ $(document).ready(function() {
       callbacks:{
         onImageUpload: function(files, editor, welEditable){
           for(var i=files.length-1; i >=0 ; i--){
-            sendFile(fiels[i], this);
+            sendFile(files[i], this);
           }
         }
       }
@@ -14,13 +14,13 @@ $(document).ready(function() {
 
 function sendFile(file, el){
   var form_data = new FormData();
-  alert("test")
   form_data.append('file',file);
   $.ajax({
     data:form_data,
     type:"POST",
     url:file_up_url,
     cache:false,
+    contentType:false,
     enctype:'multipart/form-data',
     processData:false,
     success: function(url){
