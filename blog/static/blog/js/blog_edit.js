@@ -16,7 +16,10 @@ function sendFile(file, el){
   var form_data = new FormData();
   form_data.append('file',file);
   $.ajax({
-    data:form_data,
+    data:{
+      form_data,
+      // csrfmiddlewaretoken: $("input[name='csrfmiddlewaretoken']").val()
+    },
     type:"POST",
     url:file_up_url,
     cache:false,
