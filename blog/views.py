@@ -132,9 +132,8 @@ def post_edit(request, pk):
 # https://cjh5414.github.io/django-file-upload/
 @csrf_exempt
 def fileup(request):
-    #  파일 업로드 코드 작성 필요
-    # form_data 형태에서 file 받아오는것 구현 필요
-    print(request.POST.get("form_data"))
+    
+    print(request.FILES['file'])
     url = "media" 
     return HttpResponse(url)
 
