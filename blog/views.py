@@ -111,6 +111,11 @@ def post_new(request):
             return redirect('blog:post_detail', post.pk)
     else:
         form = PostForm()
+        # 수정 필요
+        # post = form.save(commit=False)
+        # post.author = request.user
+        # post.save()
+
     return render(request, 'blog/post_edit.html', {'form':form})
 
 @login_required(login_url='admin:login')
@@ -132,8 +137,9 @@ def post_edit(request, pk):
 # https://cjh5414.github.io/django-file-upload/
 @csrf_exempt
 def fileup(request):
-    
-    print(request.FILES['file'])
+
+    request.FILES['file']
+        
     url = "media" 
     return HttpResponse(url)
 
