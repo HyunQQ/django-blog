@@ -97,6 +97,9 @@ def post_detail(request, pk):
             'form':form
         })
 
+def post_new_init(request):
+    post_inst = 
+
 #로그인 요구를 위한 장식자
 @login_required(login_url='admin:login')
 def post_new(request):

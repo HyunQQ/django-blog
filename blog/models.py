@@ -22,7 +22,7 @@ class Post(models.Model):
 
 class Post_img(models.Model):
     post = models.ForeignKey('blog.Post', on_delete=models.CASCADE,)
-    image = models.FileField(null=True, upload_to='uploaded_img')
+    image = models.ImageField(null=True, upload_to='uploaded_img/%Y/%m')
     # def approved_comment(self):
     #     return self.comments.filter(approved_comment=True)
     
