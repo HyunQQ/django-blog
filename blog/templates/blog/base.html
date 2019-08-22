@@ -72,7 +72,7 @@
                         </div>
     
                         {% if user.is_authenticated %}
-                        <a href="{% url 'blog:post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                        <a href="{% url 'blog:post_new_init' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
                         <a href="{% url 'blog:post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
                         <a href="{% url 'logout' %}" class="top-menu"><span class="glyphicon glyphicon-log-out"></span></a>
                         <span class="userName">Hello {{ user.username }}</span>

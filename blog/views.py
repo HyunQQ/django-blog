@@ -23,7 +23,7 @@ def post_list(request):
         filter = option + '__' + search_type
         
         posts = Post.objects.filter(**{filter: request.GET.get('item')}, published_date__lte = timezone.now()).order_by('-published_date')
-        posts_for_category = Post.objects.values('category').order_by('-published_date')
+        posts_for_category = Post.objects.exclude(title__exact='').values('category').order_by('-published_date')
         tmp_posts_for_category = posts_for_category.values('category')
         category_lst = pd.unique(pd.DataFrame.from_records(tmp_posts_for_category)['category'])
 
@@ -36,9 +36,10 @@ def post_list(request):
             'posts':posts,
             'posts_for_category':category_lst,
         })
-    posts_for_category = Post.objects.values('category').order_by('-published_date')
-    posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('-published_date')
-
+    posts_for_category = Post.objects.exclude(title__exact='').values('category').order_by('-published_date')
+    print(posts_for_category.values())
+    posts = Post.objects.exclude(title__exact='').filter( published_date__lte = timezone.now()).order_by('-published_date')
+    print(2)
     tmp_posts_for_category = posts_for_category.values('category')
     category_lst = pd.unique(pd.DataFrame.from_records(tmp_posts_for_category)['category'])
     
@@ -54,11 +55,11 @@ def post_list(request):
 
 def post_category_list(request, category):
     
-    posts_for_category = Post.objects.values('category').order_by('-published_date')
+    posts_for_category = Post.objects.filter(title__isnull=False).values('category').order_by('-published_date')
     tmp_posts_for_category = posts_for_category.values('category')
     category_lst = pd.unique(pd.DataFrame.from_records(tmp_posts_for_category)['category'])
 
-    posts = Post.objects.filter(category = category, published_date__lte = timezone.now()).order_by('-published_date')
+    posts = Post.objects.filter(title__isnull=False,category = category, published_date__lte = timezone.now()).order_by('-published_date')
     return render(request, 'blog/post_list.html',{
         'posts':posts,
         'posts_for_category':category_lst,
@@ -97,12 +98,17 @@ def post_detail(request, pk):
             'form':form
         })
 
+@login_required(login_url='admin:login')
 def post_new_init(request):
-    post_inst = 
+    post_inst = Post.objects.create(
+        author = request.user
+    )
+    print(post_inst.pk)
+    return redirect('blog:post_new', post_inst.pk)
 
 #로그인 요구를 위한 장식자
 @login_required(login_url='admin:login')
-def post_new(request):
+def post_new(request, pk):
     if request.method =='POST':
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
