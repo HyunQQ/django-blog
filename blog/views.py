@@ -14,7 +14,6 @@ from .models import Post, Comment
 from .forms import PostForm, LoginForm, CommentForm
 from .utils.function import remove_html_tag
 
-
 def post_list(request):
     
     if request.GET.get("item"):
@@ -37,9 +36,7 @@ def post_list(request):
             'posts_for_category':category_lst,
         })
     posts_for_category = Post.objects.exclude(title__exact='').values('category').order_by('-published_date')
-    print(posts_for_category.values())
     posts = Post.objects.exclude(title__exact='').filter( published_date__lte = timezone.now()).order_by('-published_date')
-    print(2)
     tmp_posts_for_category = posts_for_category.values('category')
     category_lst = pd.unique(pd.DataFrame.from_records(tmp_posts_for_category)['category'])
     
@@ -55,11 +52,11 @@ def post_list(request):
 
 def post_category_list(request, category):
     
-    posts_for_category = Post.objects.filter(title__isnull=False).values('category').order_by('-published_date')
+    posts_for_category = Post.objects.exclude(title__exact='').values('category').order_by('-published_date')
     tmp_posts_for_category = posts_for_category.values('category')
     category_lst = pd.unique(pd.DataFrame.from_records(tmp_posts_for_category)['category'])
 
-    posts = Post.objects.filter(title__isnull=False,category = category, published_date__lte = timezone.now()).order_by('-published_date')
+    posts = Post.objects.exclude(title__exact='').filter(category = category, published_date__lte = timezone.now()).order_by('-published_date')
     return render(request, 'blog/post_list.html',{
         'posts':posts,
         'posts_for_category':category_lst,
