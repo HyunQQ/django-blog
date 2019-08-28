@@ -65,7 +65,7 @@ def post_category_list(request, category):
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk) # 위의 4줄과 같은 역할
     comments = Comment.objects.filter(created_date__lte = timezone.now(), post=post).order_by('-created_date')
-    posts_for_category = Post.objects.values('category').order_by('-published_date')
+    posts_for_category = Post.objects.exclude(title__exact='').values('category').order_by('-published_date')
     tmp_posts_for_category = posts_for_category.values('category')
     category_lst = pd.unique(pd.DataFrame.from_records(tmp_posts_for_category)['category'])
     
@@ -106,8 +106,9 @@ def post_new_init(request):
 #로그인 요구를 위한 장식자
 @login_required(login_url='admin:login')
 def post_new(request, pk):
+    post_inst = get_object_or_404(Post, pk=pk)
     if request.method =='POST':
-        form = PostForm(request.POST, request.FILES)
+        form = PostForm(request.POST, request.FILES, instance=post_inst)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
@@ -116,11 +117,7 @@ def post_new(request, pk):
 
             return redirect('blog:post_detail', post.pk)
     else:
-        form = PostForm()
-        # 수정 필요
-        # post = form.save(commit=False)
-        # post.author = request.user
-        # post.save()
+        form = PostForm(instance=post_inst)
 
     return render(request, 'blog/post_edit.html', {'form':form})
 
@@ -190,7 +187,7 @@ def comment_remove(request, pk):
 
     
 def about(request):
-    posts_for_category = Post.objects.values('category').order_by('-published_date')
+    posts_for_category = Post.objects.exclude(title__exact='').values('category').order_by('-published_date')
     tmp_posts_for_category = posts_for_category.values('category')
     category_lst = pd.unique(pd.DataFrame.from_records(tmp_posts_for_category)['category'])
     
