@@ -5,7 +5,8 @@
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
 <script>
-    file_up_url = "{% url 'blog:fileup' pk=post.pk %}";
+    var file_up_url = "{% url 'blog:fileup' pk=post.pk %}";
+    var csrf_token = '{{ csrf_token }}'
 </script>
 <script src="{% static 'blog/js/blog_edit.js' %}"></script>
 

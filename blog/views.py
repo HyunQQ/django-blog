@@ -147,7 +147,6 @@ def post_edit(request, pk):
 
 # 참고 링크: https://devofhwb.tistory.com/90
 # https://cjh5414.github.io/django-file-upload/
-@csrf_exempt
 def fileup(request, pk):
     post_img_inst = Post_img.objects.create(image=request.FILES['file'], post_id=pk)
     img_url = str(post_img_inst.image)

@@ -17,6 +17,7 @@ function sendFile(file, el){
   var form_data = new FormData();
   form_data.append('file',file);
   $.ajax({
+    headers: {"X-CSRFToken":csrf_token},
     data:form_data,
     type:"POST",
     url:file_up_url,
