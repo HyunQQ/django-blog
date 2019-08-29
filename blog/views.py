@@ -10,7 +10,7 @@ from django.http import HttpResponse
 from django.core.paginator import Paginator
 from django.db.models import Min
 
-from .models import Post, Comment
+from .models import Post, Comment, Post_img
 from .forms import PostForm, LoginForm, CommentForm
 from .utils.function import remove_html_tag
 
@@ -119,7 +119,10 @@ def post_new(request, pk):
     else:
         form = PostForm(instance=post_inst)
 
-    return render(request, 'blog/post_edit.html', {'form':form})
+    return render(request, 'blog/post_edit.html', {
+        'form':form,
+        'post':post_inst
+    })
 
 @login_required(login_url='admin:login')
 def post_edit(request, pk):
@@ -134,15 +137,18 @@ def post_edit(request, pk):
             return redirect('blog:post_detail', pk = post.pk)
     else:
         form = PostForm(instance=post)
-    return render(request, 'blog/post_edit.html',{'form':form})
+    return render(request, 'blog/post_edit.html',{
+        'form':form,
+        'post':post
+        })
 
 # 참고 링크: https://devofhwb.tistory.com/90
 # https://cjh5414.github.io/django-file-upload/
 @csrf_exempt
-def fileup(request):
-
-    request.FILES['file']
-        
+def fileup(request, pk):
+    print(request.FILES['file'])
+    # post_img_inst = Post_img.objects.create(image=request.FILES['file'], post_id=pk)
+    
     url = "media" 
     return HttpResponse(url)
 
