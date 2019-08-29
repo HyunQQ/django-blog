@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, get_object_or_404, redirect
@@ -9,10 +10,12 @@ from django.views.generic import View
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 from django.db.models import Min
+from django.conf import settings
 
 from .models import Post, Comment, Post_img
 from .forms import PostForm, LoginForm, CommentForm
 from .utils.function import remove_html_tag
+
 
 def post_list(request):
     
@@ -146,11 +149,9 @@ def post_edit(request, pk):
 # https://cjh5414.github.io/django-file-upload/
 @csrf_exempt
 def fileup(request, pk):
-    print(request.FILES['file'])
-    # post_img_inst = Post_img.objects.create(image=request.FILES['file'], post_id=pk)
-    
-    url = "media" 
-    return HttpResponse(url)
+    post_img_inst = Post_img.objects.create(image=request.FILES['file'], post_id=pk)
+    img_url = str(post_img_inst.image)
+    return HttpResponse(img_url)
 
 def post_draft_list(request):
     posts = Post.objects.filter(published_date__isnull=True).order_by('created_date')
