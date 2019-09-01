@@ -66,7 +66,7 @@ def post_category_list(request, category):
     })
 
 def post_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk) # 위의 4줄과 같은 역할
+    post = get_object_or_404(Post, pk=pk) # 404 error 처리
     comments = Comment.objects.filter(created_date__lte = timezone.now(), post=post).order_by('-created_date')
     posts_for_category = Post.objects.exclude(title__exact='').values('category').order_by('-published_date')
     tmp_posts_for_category = posts_for_category.values('category')
@@ -147,6 +147,7 @@ def post_edit(request, pk):
 
 # 참고 링크: https://devofhwb.tistory.com/90
 # https://cjh5414.github.io/django-file-upload/
+# 파일 업로드 및 파일 url 전달
 def fileup(request, pk):
     post_img_inst = Post_img.objects.create(image=request.FILES['file'], post_id=pk)
     img_url = str(post_img_inst.image)
