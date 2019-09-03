@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
+
+    #disqus setting 
+    'django.contrib.sites',
+    'disqus',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +139,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_REDIRECT_URL='/'
 LOGOUT_REDIRECT_URL='/'
 
+
+
+# setting for disqus
+# 참조: https://www.pincoin.co.kr/blog/www/32/django-disqus-%EC%84%A4%EC%B9%98-%EC%82%AC%EC%9A%A9%EB%B2%95/?page=1
+SITE_ID = 1
+
+DISQUS_API_SECRET = 'io5p1w3X5QW72760pXhr2cG4tVdKLNEwF44hMPzVZUD0ymTV5jzWDDOMN3rXfkV5'
+DISQUS_API_KEY = 'XXBL65ez5MC8lBaGXttbJmEfOmzDRxMaUQVvsAmgQuAd3Gj844P5ztt2aUffNGcQ'
+DISQUS_WEBSITE_SHORTNAME = 'qdevlog'
