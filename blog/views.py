@@ -9,6 +9,7 @@ from django.utils import timezone
 from django.views.generic import View
 from django.http import HttpResponse
 from django.core.paginator import Paginator
+from django.urls import reverse
 from django.db.models import Min
 from django.conf import settings
 
@@ -81,22 +82,33 @@ def post_detail(request, pk):
             comment.save()
 
             comments = Comment.objects.filter(created_date__lte = timezone.now(), post=post).order_by('-created_date')
-            # return redirect('blog:post_detail', pk=post.pk)
-            return render(request, 'blog/post_detail.html', {
+
+            context = {
                 'posts_for_category':category_lst,
                 'post':post,
                 'comments':comments,
-                'form':form
-            })
+                'form':form,
+                'pk':str(pk),
+            }
+            context['post_absolute_url'] = request.build_absolute_uri(reverse('blog:post_detail', args=(pk,)))
+            # return redirect('blog:post_detail', pk=post.pk)
+            return render(request, 'blog/post_detail.html', context)
+
 
     else:
         form = CommentForm()
-    return render(request, 'blog/post_detail.html', {
+        context = {
             'posts_for_category':category_lst,
             'post':post,
             'comments':comments,
-            'form':form
-        })
+            'form':form,
+            'pk':str(pk),
+        }
+        context['post_absolute_url'] = request.build_absolute_uri(reverse('blog:post_detail', args=(pk,)))
+        # print(request.build_absolute_uri(reverse('blog:post_detail', args=(pk,))))
+
+        # print(context)
+    return render(request, 'blog/post_detail.html', context)
 
 @login_required(login_url='admin:login')
 def post_new_init(request):
