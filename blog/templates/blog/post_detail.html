@@ -6,6 +6,12 @@
 <link rel="stylesheet" href="{% static 'blog/css/blog_detail.css'%}">
 <script>
     var post_text = "{{ post.text }}";
+
+    // var disqus_config = function () {
+    //     this.page.url = '{{post_absolute_url}}';
+    //     this.page.identifier = 'post_detail_'+"{{pk}}";
+    //     this.page.title = 'disqus_title'+'{{pk}}';
+    // };
 </script>
 <script src="{% static 'blog/js/blog_detail.js'%}"></script>
 
@@ -32,7 +38,9 @@
         new disqus
         {% load disqus_tags %}
         {% set_disqus_identifier "post_detail_" pk %}
+        {% set_disqus_title pk %}
         {% set_disqus_url post_absolute_url %}
+        {% disqus_dev %}
         {% disqus_show_comments %}
     </div>
     <!-- <div id="disqus_thread"></div> -->
