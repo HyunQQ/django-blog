@@ -13,6 +13,32 @@
     //     this.page.title = 'disqus_title'+'{{pk}}';
     // };
 </script>
+
+<script>
+
+    /*
+    RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    
+    var disqus_config = function () {
+    this.page.url = "{{ post_absolute_url }}";  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = "post_detail_" +"{{pk}}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://qdevlog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
 <script src="{% static 'blog/js/blog_detail.js'%}"></script>
 
     <div class="post">
@@ -34,17 +60,8 @@
 
 
 <!-- 화면에 text 표현시 html 형태로 표현되게 변경 필요 -->
-    <div>
-        new disqus
-        {% load disqus_tags %}
-        {% set_disqus_identifier "post_detail_" pk %}
-        {% set_disqus_title pk %}
-        {% set_disqus_url post_absolute_url %}
-        {% disqus_dev %}
-        {% disqus_show_comments %}
-    </div>
-    <!-- <div id="disqus_thread"></div> -->
 
+    <div id="disqus_thread"></div>
    <!--                              
     <div class="edit_comment">
         <p>Add Comment</p>
