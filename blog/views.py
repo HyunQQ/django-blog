@@ -90,7 +90,8 @@ def post_detail(request, pk):
                 'form':form,
                 'pk':str(pk),
             }
-            context['post_absolute_url'] = request.build_absolute_uri(reverse('blog:post_detail', args=(pk,)))
+            # context['post_absolute_url'] = request.build_absolute_uri(reverse('blog:post_detail', args=(pk,)))
+            context['post_absolute_url'] = reverse('blog:post_detail', args=(pk,))
             # return redirect('blog:post_detail', pk=post.pk)
             return render(request, 'blog/post_detail.html', context)
 
