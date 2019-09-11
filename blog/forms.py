@@ -23,6 +23,19 @@ class LoginForm(forms.ModelForm):
         model = User
         fields = ['username', 'password']
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update({
+            'class':'fadeIn',
+            'id':'login',
+            'placeholder':'ID',
+        })
+        self.fields['password'].widget.attrs.update({
+            'class':'fadeIn',
+            'id':'password',
+            'placeholder':'PW',
+        })
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
@@ -33,9 +46,9 @@ class CommentForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['text'].widget.attrs.update({
             'class':'form-control',
-            })
+        })
         self.fields['author'].widget.attrs.update({
-        'class':'form-control',
+            'class':'form-control',
         })
 
 
