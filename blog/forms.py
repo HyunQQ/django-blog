@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from .models import Post, Comment
+from .models import Post
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -36,20 +36,20 @@ class LoginForm(forms.ModelForm):
             'placeholder':'PW',
         })
 
-class CommentForm(forms.ModelForm):
-    class Meta:
-        model = Comment
-        fields = ['text','author']
+# class CommentForm(forms.ModelForm):
+#     class Meta:
+#         model = Comment
+#         fields = ['text','author']
 
-        # 파일 업로드 필드에 제한 및 클래스, 라벨 추가
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['text'].widget.attrs.update({
-            'class':'form-control',
-        })
-        self.fields['author'].widget.attrs.update({
-            'class':'form-control',
-        })
+#         # 파일 업로드 필드에 제한 및 클래스, 라벨 추가
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.fields['text'].widget.attrs.update({
+#             'class':'form-control',
+#         })
+#         self.fields['author'].widget.attrs.update({
+#             'class':'form-control',
+#         })
 
 
 

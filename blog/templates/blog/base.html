@@ -78,7 +78,7 @@
                         <span class="userName">Hello {{ user.username }}</span>
                         
                         {% else %}
-                        <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-log-in"></span></span></a>
+                        <a href="{% url 'blog:signin' %}" class="top-menu"><span class="glyphicon glyphicon-log-in"></span></span></a>
                         {% endif %}
                         
                         <h1 id="blog-title"><a href="http://127.0.0.1:8000/">Q's Develop</a></h1>
