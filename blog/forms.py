@@ -26,12 +26,12 @@ class LoginForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['username'].widget.attrs.update({
-            'class':'fadeIn',
+            'class':'fadeIn signin',
             'id':'login',
             'placeholder':'ID',
         })
         self.fields['password'].widget.attrs.update({
-            'class':'fadeIn',
+            'class':'fadeIn signin',
             'id':'password',
             'placeholder':'PW',
         })
