@@ -5,6 +5,7 @@ from .models import Post
 
 class PostForm(forms.ModelForm):
     class Meta:
+        
         model = Post
         # fields = '__all__' 모든 필드 사용시
         fields =('title','text','category')
@@ -21,6 +22,7 @@ class PostForm(forms.ModelForm):
 class LoginForm(forms.ModelForm):
     class Meta:
         model = User
+        password = forms.CharField(widget=forms.PasswordInput)
         fields = ['username', 'password']
 
     def __init__(self, *args, **kwargs):
