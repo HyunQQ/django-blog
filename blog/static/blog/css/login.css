@@ -180,7 +180,8 @@
   height: 50%;
   margin: 10% auto;
   text-align: center;
-  
+  background: #fff;
+  padding: 5%;
 }
 #signin_logo{
   width: 110px;

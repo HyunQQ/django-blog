@@ -17,26 +17,28 @@ class PostForm(forms.ModelForm):
             'id':'summernote',
             })
 
-
-
 class LoginForm(forms.ModelForm):
     class Meta:
         model = User
-        password = forms.CharField(widget=forms.PasswordInput)
         fields = ['username', 'password']
+        widgets={
+            'username': forms.TextInput(attrs={'class':'fadeIn signin', 'id':'login','placeholder':'ID'}),
+            'password': forms.PasswordInput(attrs={'class':'fadeIn signin', 'id':'password','placeholder':'PW'})
+        }
+        
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update({
-            'class':'fadeIn signin',
-            'id':'login',
-            'placeholder':'ID',
-        })
-        self.fields['password'].widget.attrs.update({
-            'class':'fadeIn signin',
-            'id':'password',
-            'placeholder':'PW',
-        })
+        # self.fields['username'].widget.attrs.update({
+        #     'class':'fadeIn signin',
+        #     'id':'login',
+        #     'placeholder':'ID',
+        # })
+        # self.fields['password'].widget.attrs.update({
+        #     'class':'fadeIn signin',
+        #     'id':'password',
+        #     'placeholder':'PW',
+        # })
 
 # class CommentForm(forms.ModelForm):
 #     class Meta:
